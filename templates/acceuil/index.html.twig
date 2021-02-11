@@ -13,6 +13,7 @@
                   <div class="logo"><a href="{{path('acceuil')}}"><img src="images/logo.png"></a></div>
                   <div class="menu_text">
                      <ul>
+                     {% if not app.user %}
                         <div class="togle_">
                            <div class="menu_main">
                               <ul>
@@ -20,14 +21,28 @@
                               </ul>
                            </div>
                         </div>
+                       {% else %}
+                        <div class="togle_">
+                           <div class="menu_main">
+                              <ul>
+                                 <li><a href="{{path('deconnexion')}}" style="color:white;">Déconnexion</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        {% endif %}
                         <div id="myNav" class="overlay">
                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                            <div class="overlay-content">
                               <a href="index.html">Acceuil</a>
+                              {% if not app.user %}
+                              
                               <a href="{{path('inscription')}}">Inscriptiion</a>
+                              {% else %}
+                              <a href="{{path('client')}}">Gestion des clients </a>
+                              {% endif %}
                               <div class="dropdown">
                       
-                        <a href="{{path('deconnexion')}}">Déconnexion</a>
+                        
                         </div>
                            </div>
                         </div>

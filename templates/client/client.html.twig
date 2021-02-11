@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client {% endblock %}
+
+{% block body %}
+<div class="header_section header_bg">
+         <div class="container-fluid">
+               <div class="main">
+                  <div class="logo"><a href="{{path('acceuil')}}"><img src="images/logo.png"></a></div>
+                  <div class="menu_text">
+                     <ul>
+                        <div class="togle_">
+                           <div class="menu_main">
+                              <ul>
+                                 <li><a href="{{path('connexion')}}" style="color:white">Login</a></li>
+                                
+                              </ul>
+                           </div>
+                        </div>
+                        <div id="myNav" class="overlay">
+                           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                           <div class="overlay-content">
+                             <a href="{{path('acceuil')}}">Acceuil</a>
+                              <a href="{{path('inscription')}}">Inscriptiion</a>
+                           </div>
+                        </div>
+                        <span class="navbar-toggler-icon"></span>
+                        <span onclick="openNav()"><img src="images/toogle-icon.png" class="toggle_menu"></span>
+                        <span onclick="openNav()"><img src="images/toogle-icon1.png" class="toggle_menu_1"></span>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+</div>
+
+<div class="row no-gutters" style="padding-top:20px">
+<div style="margin-left:15%">
+<h1 class="border border-dark rounded text-white  p-2 text-center bg-info" style="width:70%;">Liste des clients</h1>
+</div>
+{% for client in clients %}
+    <div class="col-12 col-lg-6 p-1">
+        <div class="card mb-3">
+            <div class="row no-gutters align-items-center p-2">
+                <div class="col-12 col-md-4">
+                    <div class="card-body">
+                    <h5 class="title"> Nom :{{client.nom}}</h5>
+                    <p class="card-text">
+                    <div>Prénom: {{client.prenom}}</div>
+                    <div>Adresse : {{client.adresse}}</div>
+                    <div> N° Tél : {{client.numTel}}</div>
+                    <div>Adresse mail : {{client.adresseMail}}</div>
+                    </p>
+                    </div>
+
+                 </div>
+            </div>
+        </div>
+    </div>
+    
+{% endfor %}
+</div>
+{% endblock %}
